@@ -1,0 +1,38 @@
+@startuml Database
+class GROUP {
+  group_id : int
+  group_faculty : varchar
+  group_specialty : varchar
+  group_year : int
+}
+
+class SUBJECT {
+  subject_id : int
+  subject_audience : varchar
+  subject_name : varchar
+  subject_teacher : int
+  subject_time : int
+  subject_type : smallint
+  subject_weekday : smallint
+  subject_weektype : smallint
+}
+
+class USER {
+  user_id : int
+  user_name : varchar
+  user_login : varchar
+  user_password : char[256]
+  user_type : smallint
+  user_group : int
+}
+
+class VISITS {
+  group_id : int
+  subject_id : int
+}
+
+USER "n" -up- "1" GROUP : part of >
+USER "1" -right- "n" SUBJECT : teaches >
+SUBJECT "1" -up- "1" VISITS
+GROUP "1" -right- "1" VISITS
+@enduml
