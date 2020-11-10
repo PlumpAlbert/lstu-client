@@ -2,6 +2,14 @@ DROP TABLE "VISITS";
 DROP TABLE "SUBJECT";
 DROP TABLE "USER";
 DROP TABLE "GROUP";
+
+CREATE TABLE "GROUP" (
+  "group_id" SERIAL PRIMARY KEY NOT NULL,
+  "group_faculty" varchar NOT NULL,
+  "group_specialty" varchar NOT NULL,
+  "group_year" int NOT NULL
+);
+
 CREATE TABLE "USER" (
   "user_id" SERIAL PRIMARY KEY NOT NULL,
   "user_name" varchar NOT NULL,
@@ -9,13 +17,6 @@ CREATE TABLE "USER" (
   "user_password" char[256] NOT NULL,
   "user_type" smallint NOT NULL,
   "group_id" int REFERENCES "GROUP"
-);
-
-CREATE TABLE "GROUP" (
-  "group_id" SERIAL PRIMARY KEY NOT NULL,
-  "group_faculty" varchar NOT NULL,
-  "group_specialty" varchar NOT NULL,
-  "group_year" int NOT NULL
 );
 
 CREATE TABLE "SUBJECT" (
